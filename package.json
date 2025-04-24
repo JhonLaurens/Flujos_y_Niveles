@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "node --no-deprecation node_modules/http-server/bin/http-server . -p 8000 -c-1",
+    "debug-server": "node --trace-deprecation node_modules/http-server/bin/http-server . -p 8000",
+    "watch": "browser-sync start --server . --files \"index.html style.css fixed-style.css script.js simulation.js diagnostic.js img/**/*\""
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "browser-sync": "^2.27.10"
+  }
+}

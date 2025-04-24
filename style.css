@@ -1,0 +1,356 @@
+/* Reset completo para evitar problemas de espaciado */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variables globales */
+:root {
+  --primary-color: #0077aa;
+  --primary-dark: #004466;
+  --primary-light: #eaf4f9;
+  --accent-color: #ffd700;
+  --text-dark: #333;
+  --text-light: #fff;
+  --background-light: #f4f7fa;
+  --background-card: #fff;
+  --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --transition-normal: all 0.3s ease;
+  --border-radius: 8px;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --sidebar-width: 260px;
+}
+
+/* Estilos base */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--text-dark);
+  background: var(--background-light);
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* CORREGIDO - Sidebar */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100%;
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  z-index: 1000;
+  overflow-y: auto;
+  transform: translateX(-100%); /* Inicialmente oculto */
+  transition: transform 0.3s ease;
+}
+
+#sidebar.open {
+  transform: translateX(0); /* Visible cuando tiene la clase 'open' */
+}
+
+/* CORREGIDO - Contenido principal */
+#main-content {
+  width: 100%;
+  min-height: 100vh;
+  margin-left: 0; /* Sin margen por defecto */
+  transition: margin-left 0.3s ease;
+  position: relative;
+}
+
+/* CORREGIDO - Botón de toggle */
+#sidebar-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001; /* Por encima del sidebar */
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: var(--transition-normal);
+}
+
+/* CORREGIDO - TOC */
+#toc {
+  padding: 3rem 1rem 1rem 1.5rem;
+}
+
+#toc h2 {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+#toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#toc ul li {
+  margin-bottom: 0.8rem;
+}
+
+#toc ul li a {
+  color: var(--primary-light);
+  text-decoration: none;
+  transition: var(--transition-normal);
+  display: block;
+  padding: 0.3rem 0;
+}
+
+#toc ul li a:hover,
+#toc ul li a.active {
+  color: var(--accent-color);
+  padding-left: 0.5rem;
+}
+
+/* CORREGIDO - Layout para escritorio */
+@media (min-width: 992px) {
+  #sidebar {
+    transform: translateX(0); /* Visible por defecto en desktop */
+  }
+  
+  #main-content {
+    margin-left: var(--sidebar-width); /* Espacio para sidebar */
+    width: calc(100% - var(--sidebar-width));
+  }
+  
+  #sidebar-toggle {
+    display: none; /* Oculto en desktop */
+  }
+}
+
+/* CORREGIDO - Encabezado */
+header {
+  background: var(--primary-dark);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: white;
+}
+
+header p {
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+/* CORREGIDO - Contenido main */
+main {
+  width: 90%;               /* Ocupa el 90% del ancho disponible */
+  max-width: 1200px;        /* No exceder 1200px en pantallas grandes */
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* CORRECCIÓN: Secciones y acordeón */
+.accordion-section {
+  margin-bottom: 1.5rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  background: white;
+}
+
+.accordion-toggle {
+  width: 100%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  text-align: left;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.accordion-toggle h2 {
+  margin: 0;
+  color: white;
+  font-size: 1.2rem;
+  flex: 1;
+}
+
+.accordion-toggle:after {
+  content: '▼';
+  font-size: 0.8rem;
+  transition: transform 0.3s;
+}
+
+.accordion-toggle[aria-expanded="true"]:after {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  display: none;
+  padding: 1.5rem;
+  background: white;
+}
+
+.accordion-content.open {
+  display: block;
+}
+
+/* Estilos adicionales para contenido interno */
+.section-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.text-content {
+  flex: 1 1 60%;
+  min-width: 300px;
+}
+
+.image-container {
+  flex: 1 1 35%;
+  min-width: 250px;
+}
+
+/* Barra de progreso */
+.progress-alert {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.95);
+  padding: 0.5rem;
+  z-index: 100;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-value {
+  height: 100%;
+  background: var(--primary-color);
+}
+
+/* CORRECCIÓN: Media queries */
+@media (min-width: 992px) {
+  #sidebar {
+    left: 0; /* Visible en desktop */
+  }
+  
+  #main-content {
+    margin-left: 280px; /* Espacio para el sidebar */
+    width: calc(100% - 280px);
+  }
+  
+  #sidebar-toggle {
+    display: none; /* Oculto en desktop */
+  }
+  
+  header {
+    padding-top: 2rem; /* Sin necesidad de espaciado extra */
+  }
+}
+
+/* Media queries para móvil */
+@media (max-width: 991px) {
+  #main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .section-content {
+    flex-direction: column;
+  }
+  
+  .image-container {
+    order: -1; /* Imágenes primero en móvil */
+  }
+}
+
+/* CORRECCIÓN: Modal lightbox */
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-modal.show {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 80%;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* CORRECCIÓN: Banner de cookies */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 1500;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .cookie-banner {
+    flex-direction: column;
+  }
+}
+
+/* Logo de la universidad en el header */
+.university-logo {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  max-width: 20vw;    /* escala con el ancho de la ventana */
+  max-height: 10vh;   /* no exceder el 10% de la altura de la ventana */
+  height: auto;
+}

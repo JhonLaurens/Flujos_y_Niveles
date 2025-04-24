@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Información educativa sobre niveles y flujos en la dinámica de sistemas. Comprende los conceptos fundamentales de modelamiento de sistemas complejos.">
+  <meta name="keywords" content="dinámica de sistemas, niveles, flujos, variables auxiliares, Forrester, modelado, simulación">
+  <meta name="author" content="Educación en Dinámica de Sistemas">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <title>Niveles y Flujos | Dinámica de Sistemas</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fixed-style.css">
+  <!-- Precargar imágenes críticas -->
+  <link rel="preload" as="image" href="img/Esquema de un nivel con flujos de entrada y salida.png">
+  <link rel="preload" as="image" href="img/metáfora de la bañera.jpeg">
+  
+  <!-- Font Awesome para iconos más profesionales -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Forzar rutas relativas y desactivar cache -->
+  <base href="./">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+</head>
+<body>
+  <aside id="sidebar" class="open">
+    <nav id="toc">
+      <h2>Contenido</h2>
+      <ul>
+        <!-- JS genera aquí los enlaces -->
+      </ul>
+    </nav>
+  </aside>
+  
+  <button id="sidebar-toggle" aria-label="Abrir/cerrar menú">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  
+  <div id="main-content">
+    <header style="position:relative;">
+      <h1>Niveles y Flujos</h1>
+      <p>Una introducción clara y visual a la dinámica de sistemas</p>
+      <!-- logo universidad -->
+      <img src="img/LOGO ITM 2020-2-04.png" alt="Logo ITM" class="university-logo">
+    </header>
+    
+    <main>
+      <!-- Alerta de progreso -->
+      <div class="progress-alert" id="progress-indicator">
+        <div class="progress-bar">
+          <div class="progress-value"></div>
+        </div>
+        <p class="progress-text">0% completado</p>
+      </div>
+
+      <!-- Secciones en acordeón -->
+      <section class="accordion-section" id="introduccion">
+        <button class="accordion-toggle" aria-expanded="true">
+          <h2>1. Introducción</h2>
+        </button>
+        <div class="accordion-content open">
+          <div class="section-content">
+            <div class="text-content">
+              <h2>Dinámica de Sistemas: Niveles y Flujos</h2>
+              <p>Los <strong>niveles</strong>, <strong>flujos</strong> y la <strong>acumulación</strong> son conceptos fundamentales para entender la <strong>dinámica de sistemas</strong>. A diferencia de los <strong>diagramas causales</strong> que solo muestran relaciones, estos elementos permiten visualizar cómo se acumula información y cómo fluye a lo largo del tiempo, posibilitando la <strong>simulación</strong> del sistema.</p>
+              
+
+              <h3>Origen e Importancia</h3>
+              <p>La dinámica de sistemas, desarrollada por Jay W. Forrester en los años 50, permite modelar sistemas complejos y entender su comportamiento a través del tiempo. Los niveles y flujos son las estructuras matemáticas básicas que hacen posible la cuantificación y simulación de sistemas dinámicos.</p>
+              
+
+              <h3>Aplicaciones</h3>
+              <ul>
+                <li>Planificación de recursos empresariales</li>
+                <li>Gestión de cadenas de suministro</li>
+                <li>Modelado de sistemas ecológicos</li>
+                <li>Epidemiología</li>
+                <li>Economía y finanzas</li>
+                <li>Gestión de proyectos</li>
+              </ul>
+              
+
+              <p><strong>Ejemplo concreto:</strong> Imagina un tanque de agua (<em>nivel</em>). El agua que entra por el grifo es el <em>flujo de entrada</em>, y el agua que sale por el desagüe es el <em>flujo de salida</em>. El nivel cambia según la diferencia entre estos flujos.</p>
+            </div>
+            <div class="image-container">
+              <img src="img/Esquema de un nivel con flujos de entrada y salida.png" alt="Esquema de un nivel con flujos de entrada y salida" class="section-image lightbox-trigger">
+              <p class="image-caption">Figura 1: Esquema de un nivel con flujos de entrada y salida</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="accordion-section" id="definicion-niveles">
+        <button class="accordion-toggle">
+          <h2>2. Definición de Niveles</h2>
+        </button>
+        <div class="accordion-content">
+          <div class="section-content">
+            <div class="text-content">
+              <h3>Características esenciales</h3>
+              <p>Los niveles (también llamados stocks o acumulaciones) son elementos fundamentales que:</p>
+              <ul>
+                <li>Representan acumulaciones que caracterizan el estado de un sistema</li>
+                <li>Actúan como "memoria" del sistema, almacenando los resultados de acciones pasadas</li>
+                <li>Introducen retardos e inercia en el comportamiento del sistema</li>
+                <li>Persisten incluso cuando los flujos se detienen</li>
+              </ul>
+              
+
+              <h3>Ejemplos comunes</h3>
+              <p>Algunos ejemplos cotidianos de niveles incluyen:</p>
+              <ul>
+                <li><strong>Inventario</strong> en una empresa</li>
+                <li><strong>Población</strong> de una ciudad o país</li>
+                <li><strong>Saldo bancario</strong> de una cuenta</li>
+                <li><strong>Empleados</strong> en una organización</li>
+                <li><strong>Confianza</strong> en una relación</li>
+                <li><strong>Conocimiento</strong> acumulado</li>
+              </ul>
+              
+
+              <h3>Representación matemática</h3>
+              <p>Un nivel siempre representa una cantidad acumulada en un momento específico. Se mide en unidades (no unidades por tiempo).</p>
+            </div>
+            <div class="image-container">
+              <img src="img/gráfica de diferentes tipos de niveles.png" alt="Gráfica de diferentes tipos de niveles" class="section-image lightbox-trigger">
+              <p class="image-caption">Representación gráfica de diferentes tipos de niveles</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="accordion-section" id="definicion-flujos">
+        <button class="accordion-toggle">
+          <h2>3. Definición de Flujos</h2>
+        </button>
+        <div class="accordion-content">
+          <div class="section-content">
+            <div class="text-content">
+              <h3>Características principales</h3>
+              <p>Los <strong>flujos</strong> son tasas de cambio que modifican los niveles a lo largo del tiempo. Se caracterizan por:</p>
+              <ul>
+                <li>Representar actividades que aumentan o disminuyen un nivel</li>
+                <li>Medirse siempre en unidades por tiempo (e.g., personas/año, $/mes, litros/segundo)</li>
+                <li>Pueden ser flujos de entrada (que aumentan un nivel) o flujos de salida (que disminuyen un nivel)</li>
+              </ul>
+              
+
+              <h3>Tipos de flujos</h3>
+              <p>Podemos clasificar los flujos en varias categorías:</p>
+              <ul>
+                <li><strong>Flujos físicos</strong>: movimiento de materiales, personas u objetos</li>
+                <li><strong>Flujos de información</strong>: transmisión de datos, conocimientos o percepciones</li>
+                <li><strong>Flujos financieros</strong>: movimiento de dinero o recursos económicos</li>
+              </ul>
+              
+
+              <h3>Ejemplos comunes</h3>
+              <table class="info-table">
+                <thead>
+                  <tr>
+                    <th>Nivel</th>
+                    <th>Flujo de entrada</th>
+                    <th>Flujo de salida</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Inventario</td>
+                    <td>Producción, Compras</td>
+                    <td>Ventas, Deterioro</td>
+                  </tr>
+                  <tr>
+                    <td>Población</td>
+                    <td>Nacimientos, Inmigración</td>
+                    <td>Muertes, Emigración</td>
+                  </tr>
+                  <tr>
+                    <td>Conocimiento</td>
+                    <td>Aprendizaje</td>
+                    <td>Olvido</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="image-container">
+              <img src="img/Representación de flujos de entrada y salida.png" alt="Representación de flujos de entrada y salida" class="section-image lightbox-trigger loaded" style="cursor: pointer;">
+              <p class="image-caption">Representación de flujos de entrada y salida</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="accordion-section" id="estructura">
+        <button class="accordion-toggle">
+          <h2>4. Estructura General y Diagramación</h2>
+        </button>
+        <div class="accordion-content">
+          <div class="section-content">
+            <div class="text-content">
+              <h3>Elementos de diagramación</h3>
+              <p>En los diagramas de dinámica de sistemas, utilizamos las siguientes convenciones:</p>
+              <ul>
+                <li><strong>Niveles</strong>: Se representan con rectángulos</li>
+                <li><strong>Flujos</strong>: Se representan con flechas gruesas y "válvulas" (símbolos en forma de reloj de arena)</li>
+                <li><strong>Variables auxiliares</strong>: Se representan con círculos</li>
+                <li><strong>Conectores</strong>: Se representan con flechas delgadas para indicar relaciones causales</li>
+              </ul>
+              
+
+              <h3>Ejemplos estructurales</h3>
+              <p>A continuación, se muestran algunos patrones comunes:</p>
+              <ul>
+                <li><strong>Población</strong>: Nivel conectado con flujos de nacimientos y muertes</li>
+                <li><strong>Empleados</strong>: Nivel conectado con flujos de contrataciones, renuncias, despidos y jubilaciones</li>
+                <li><strong>Deuda</strong>: Nivel conectado con flujos de préstamos y repagos</li>
+              </ul>
+              
+
+              <h3>Reglas de diagramación</h3>
+              <p>Es importante seguir estas reglas al crear diagramas de niveles y flujos:</p>
+              <ol class="numbered-list">
+                <li>Los niveles solo pueden cambiar a través de flujos</li>
+                <li>Los flujos deben tener unidades compatibles con los niveles</li>
+                <li>Las variables auxiliares no pueden cambiar niveles directamente</li>
+                <li>Los conectores representan transferencia de información, no de material</li>
+              </ol>
+            </div>
+            <div class="image-container">
+              <img src="img/diagrama completo de niveles y flujos.png" alt="Diagrama completo de niveles y flujos" class="section-image lightbox-trigger loaded" style="cursor: pointer;">
+              <p class="image-caption">Ejemplo de un diagrama completo de niveles y flujos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="accordion-section" id="representacion-matematica">
+        <button class="accordion-toggle">
+          <h2>5. Representación Matemática</h2>
+        </button>
+        <div class="accordion-content">
+          <div class="section-content">
+            <div class="text-content">
+              <h3>Ecuaciones fundamentales</h3>
+              <p><strong>Representación integral:</strong> Nivel(t) = Nivel(0) + ∫<sub>0</sub><sup>t</sup>(Flujo_entrada - Flujo_salida) ds</p>
+              <p><strong>Representación diferencial:</strong> d(Nivel)/dt = Flujo_entrada(t) - Flujo_salida(t)</p>
+              
+
+              <h3>La metáfora de la bañera</h3>
+              <p>Para entender intuitivamente los niveles y flujos, imagine una bañera:</p>
+              <ul>
+                <li>El <strong>nivel</strong> es la cantidad de agua en la bañera</li>
+                <li>El <strong>flujo de entrada</strong> es el agua que entra por el grifo</li>
+                <li>El <strong>flujo de salida</strong> es el agua que sale por el desagüe</li>
+              </ul>
+              
+
+              <h3>Equilibrio y desequilibrio</h3>
+              <p>Cuando los flujos de entrada y salida son iguales, el nivel permanece constante. Cualquier desequilibrio provoca cambios en el nivel:</p>
+              <ul>
+                <li>Si entrada > salida → el nivel aumenta</li>
+                <li>Si entrada < salida → el nivel disminuye</li>
+              </ul>
+            </div>
+            <div class="image-container">
+              <img src="img/metáfora de la bañera.jpeg" alt="Metáfora de la bañera" class="section-image lightbox-trigger">
+              <p class="image-caption">La metáfora de la bañera ilustra el concepto de niveles y flujos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="accordion-section" id="contribucion">
+        <button class="accordion-toggle">
+          <h2>6. Contribución a la Dinámica</h2>
+        </button>
+        <div class="accordion-content">
+          <div class="section-content">
+            <div class="text-content">
+              <p>Los niveles son elementos fundamentales que proporcionan características esenciales a los sistemas dinámicos:</p>
+              
+
+              <h3>Estado del sistema</h3>
+              <p>Los niveles representan el estado actual del sistema en cualquier momento. Sin niveles, un sistema no tendría "memoria" de eventos pasados.</p>
+              
+
+              <h3>Inercia y memoria</h3>
+              <p>Los niveles acumulan los efectos de acciones pasadas, proporcionando inercia al sistema. Esto significa que el estado actual depende de toda la historia previa, no solo de las condiciones inmediatas.</p>
+              
+
+              <h3>Origen de retardos</h3>
+              <p>Los niveles crean retardos naturales entre causas y efectos, lo que puede generar comportamientos contraintuitivos como:</p>
+              <ul>
+                <li>Oscilaciones</li>
+                <li>Sobrecompensación</li>
+                <li>Resistencia a políticas correctivas</li>
+              </ul>
+              
+
+              <h3>Desequilibrios dinámicos</h3>
+              <p>La acumulación en los niveles puede crear desequilibrios que persisten en el tiempo, incluso cuando las entradas y salidas momentáneas están equilibradas.</p>
+            </div>
+            <div class="image-container">
+              <img src="img/delays-oscillation.svg" alt="Retardos y oscilaciones" class="section-image lightbox-trigger">
+              <p class="image-caption">Figura 2: Los retardos generados por niveles pueden causar oscilaciones</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="accordion-section" id="variables-auxiliares">
+        <button class="accordion-toggle">
+          <h2>7. Variables Auxiliares</h2>
+        </button>
+        <div class="accordion-content">
+          <div class="section-content">
+            <div class="text-content">
+              <h3>Definición y propósito</h3>
+              <p>Las variables auxiliares son componentes intermedios que simplifican y aclaran los modelos de dinámica de sistemas, sirviendo como:</p>
+              <ul>
+                <li>Transformadores de información</li>
+                <li>Simplificadores de cálculos complejos</li>
+                <li>Clarificadores conceptuales</li>
+              </ul>
+              
+
+              <h3>Reglas de uso</h3>
+              <p>Las variables auxiliares están sujetas a importantes restricciones:</p>
+              <ul>
+                <li><strong>No pueden tener vínculos causales directos con los niveles</strong> - sólo pueden influir en los flujos</li>
+                <li><strong>No acumulan</strong> - representan cálculos instantáneos</li>
+                <li><strong>No tienen memoria</strong> - dependen solo del estado actual</li>
+              </ul>
+              
+
+              <h3>Ejemplos comunes</h3>
+              <p>Algunas variables auxiliares típicas incluyen:</p>
+              <ul>
+                <li>Tasas (de interés, de inflación)</li>
+                <li>Razones y proporciones</li>
+                <li>Promedios móviles</li>
+                <li>Indicadores calculados</li>
+              </ul>
+              
+
+              <div class="code-example">
+                <pre><code>Tasa_contratacion = Empleados_requeridos * Factor_ajuste
+Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="accordion-section" id="tiempo-continuo">
+        <button class="accordion-toggle">
+          <h2>8. Tiempo Continuo y Flujos</h2>
+        </button>
+        <div class="accordion-content">
+          <div class="section-content">
+            <div class="text-content">
+              <h3>El concepto de tiempo en dinámica de sistemas</h3>
+              <p>La dinámica de sistemas se basa en una representación continua del tiempo, aunque en la práctica se implementa mediante simulaciones discretas con pasos de tiempo (dt) suficientemente pequeños.</p>
+              
+
+              <h3>Tipos de flujos por su naturaleza</h3>
+              <table class="info-table">
+                <thead>
+                  <tr>
+                    <th>Flujos continuos</th>
+                    <th>Flujos discretos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <ul>
+                        <li>Continuamente divisibles</li>
+                        <li>Ejemplo: litros/segundo, watts</li>
+                        <li>Más cercanos a la naturaleza matemática de DS</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        <li>Representan elementos discretos</li>
+                        <li>Ejemplo: personas/mes, unidades/día</li>
+                        <li>Requieren aproximación continua</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              
+
+              <h3>Consideraciones matemáticas</h3>
+              <p>Incluso cuando modelamos entidades intrínsecamente discretas (como personas), en dinámica de sistemas las tratamos matemáticamente como flujos continuos.</p>
+              <p>Por ejemplo, podemos modelar 2.5 personas/mes aunque en la realidad las personas son unidades discretas.</p>
+            </div>
+            <div class="image-container">
+              <img src="img/continuous-vs-discrete.svg" alt="Flujos continuos vs discretos" class="section-image lightbox-trigger">
+              <p class="image-caption">Figura 3: Comparación entre flujos continuos y discretos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="accordion-section" id="practica">
+        <button class="accordion-toggle">
+          <h2><i class="fa-solid fa-cubes"></i> 9. Práctica</h2>
+        </button>
+        <div class="accordion-content">
+          <div class="section-content">
+            <div class="text-content">
+              <h3>Herramientas para modelar</h3>
+              <p>Existen diversas herramientas para implementar modelos de niveles y flujos:</p>
+              <ul>
+                <li><strong>Software especializado</strong>: Vensim, Stella, Powersim, AnyLogic</li>
+                <li><strong>Hojas de cálculo</strong>: Excel, Google Sheets</li>
+                <li><strong>Lenguajes de programación</strong>: Python (PySD), R, MATLAB</li>
+              </ul>
+              
+
+              <h3>Metodología práctica</h3>
+              <ol class="numbered-list">
+                <li>Identificar los niveles clave del sistema</li>
+                <li>Determinar los flujos de entrada y salida para cada nivel</li>
+                <li>Establecer las variables auxiliares necesarias</li>
+                <li>Definir las relaciones matemáticas</li>
+                <li>Implementar el modelo en la herramienta elegida</li>
+                <li>Validar el modelo con datos históricos</li>
+                <li>Realizar análisis de sensibilidad</li>
+                <li>Explorar escenarios de políticas alternativas</li>
+              </ol>
+              
+
+              <div class="example-box">
+                <h4>Ejemplo práctico: Sistema de inventario</h4>
+                <p><strong>Nivel</strong>: Inventario (unidades)</p>
+                <p><strong>Flujos</strong>:</p>
+                <ul>
+                  <li>Entrada: Producción (unidades/semana)</li>
+                  <li>Salida: Ventas (unidades/semana)</li>
+                </ul>
+                <p><strong>Variables auxiliares</strong>:</p>
+                <ul>
+                  <li>Inventario deseado = Ventas esperadas * Tiempo de cobertura</li>
+                  <li>Brecha de inventario = Inventario deseado - Inventario</li>
+                  <li>Producción = MAX(0, Ventas esperadas + Brecha de inventario / Tiempo de ajuste)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="image-container">
+              <img src="img/Diagrama causal de un sistema de inventario de ropa con retroalimentaciones.png"
+                   alt="Diagrama causal de un sistema de inventario de ropa con retroalimentaciones"
+                   class="section-image lightbox-trigger">
+              <p class="image-caption">Diagrama causal de un sistema de inventario de ropa con retroalimentaciones</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <p>© 2025 Página Educativa de Dinámica de Sistemas</p>
+          <a href="https://github.com/JhonLaurens" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> JhonLaurens
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <!-- Lightbox modal con mejoras -->
+  <div id="lightbox-modal" class="lightbox-modal hidden" style="display:none;" aria-modal="true" role="dialog">
+    <span class="lightbox-close" aria-label="Cerrar imagen"><i class="fa-solid fa-times"></i></span>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption"></div>
+    <div class="lightbox-controls">
+      <button class="lightbox-nav" id="lightbox-prev" aria-label="Imagen anterior"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="lightbox-nav" id="lightbox-next" aria-label="Imagen siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+  
+  <!-- Simulación modal mejorada -->
+  <div id="simulation-modal" class="simulation-modal hidden" style="display:none;" aria-modal="true" role="dialog">
+    <div class="simulation-container">
+      <div class="simulation-header">
+        <h3><i class="fa-solid fa-chart-line"></i> Simulación: Sistema de Inventario</h3>
+        <button class="close-simulation" aria-label="Cerrar simulación"><i class="fa-solid fa-times"></i></button>
+      </div>
+      <div class="simulation-body">
+        <!-- ...contenido de simulación... -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Cookie consent banner mejorado -->
+  <div id="cookie-consent" class="cookie-banner" style="opacity: 0; transition: opacity 0.3s ease;">
+    <p>Utilizamos cookies para mejorar su experiencia. Al continuar navegando acepta nuestra <a href="#">política de privacidad</a>.</p>
+    <div>
+      <button id="accept-cookies" class="cookie-btn accept">Aceptar</button>
+      <button id="reject-cookies" class="cookie-btn reject">Solo esenciales</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+  <script src="simulation.js"></script>
+  <script src="diagnostic.js"></script>
+</body>
+</html>
