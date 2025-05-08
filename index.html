@@ -13,7 +13,7 @@
   <title>Niveles y Flujos | Dinámica de Sistemas</title>
   
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="fixed-style.css">
+  <link rel="preload" href="style.css" as="style">
   <!-- Precargar imágenes críticas -->
   <link rel="preload" as="image" href="img/Esquema de un nivel con flujos de entrada y salida.png">
   <link rel="preload" as="image" href="img/metáfora de la bañera.jpeg">
@@ -34,6 +34,14 @@
         <!-- JS genera aquí los enlaces -->
       </ul>
     </nav>
+    <div class="sidebar-logo-container">
+      <img
+        src="img/LOGO ITM 2020-03.png"
+        srcset="img/LOGO ITM 2020-03@2x.png 2x"
+        alt="Logo ITM"
+        class="sidebar-logo"
+        loading="lazy">
+    </div>
   </aside>
   
   <button id="sidebar-toggle" aria-label="Abrir/cerrar menú">
@@ -41,11 +49,18 @@
   </button>
   
   <div id="main-content">
-    <header style="position:relative;">
-      <h1>Niveles y Flujos</h1>
+    <img
+      src="img/LOGO ITM 2020-2-04.png"
+      srcset="img/LOGO ITM 2020-2-04@2x.png 2x"
+      alt="Logo ITM Universidad"
+      class="university-logo loading"
+      loading="lazy">
+    <header>
+      <div class="split-text-container">
+        <span class="text-part left">Niveles y</span>
+        <span class="text-part right">Flujos</span>
+      </div>
       <p>Una introducción clara y visual a la dinámica de sistemas</p>
-      <!-- logo universidad -->
-      <img src="img/LOGO ITM 2020-2-04.png" alt="Logo ITM" class="university-logo">
     </header>
     
     <main>
@@ -87,7 +102,7 @@
               <p><strong>Ejemplo concreto:</strong> Imagina un tanque de agua (<em>nivel</em>). El agua que entra por el grifo es el <em>flujo de entrada</em>, y el agua que sale por el desagüe es el <em>flujo de salida</em>. El nivel cambia según la diferencia entre estos flujos.</p>
             </div>
             <div class="image-container">
-              <img src="img/Esquema de un nivel con flujos de entrada y salida.png" alt="Esquema de un nivel con flujos de entrada y salida" class="section-image lightbox-trigger">
+              <img src="img/Esquema de un nivel con flujos de entrada y salida.png" alt="Esquema de un nivel con flujos de entrada y salida" class="section-image lightbox-trigger" loading="lazy">
               <p class="image-caption">Figura 1: Esquema de un nivel con flujos de entrada y salida</p>
             </div>
           </div>
@@ -127,7 +142,7 @@
               <p>Un nivel siempre representa una cantidad acumulada en un momento específico. Se mide en unidades (no unidades por tiempo).</p>
             </div>
             <div class="image-container">
-              <img src="img/gráfica de diferentes tipos de niveles.png" alt="Gráfica de diferentes tipos de niveles" class="section-image lightbox-trigger">
+              <img src="img/gráfica de diferentes tipos de niveles.png" alt="Gráfica de diferentes tipos de niveles" class="section-image lightbox-trigger" loading="lazy">
               <p class="image-caption">Representación gráfica de diferentes tipos de niveles</p>
             </div>
           </div>
@@ -188,7 +203,7 @@
               </table>
             </div>
             <div class="image-container">
-              <img src="img/Representación de flujos de entrada y salida.png" alt="Representación de flujos de entrada y salida" class="section-image lightbox-trigger loaded" style="cursor: pointer;">
+              <img src="img/Representación de flujos de entrada y salida.png" alt="Representación de flujos de entrada y salida" class="section-image lightbox-trigger loaded" style="cursor: pointer;" loading="lazy">
               <p class="image-caption">Representación de flujos de entrada y salida</p>
             </div>
           </div>
@@ -231,7 +246,7 @@
               </ol>
             </div>
             <div class="image-container">
-              <img src="img/diagrama completo de niveles y flujos.png" alt="Diagrama completo de niveles y flujos" class="section-image lightbox-trigger loaded" style="cursor: pointer;">
+              <img src="img/diagrama completo de niveles y flujos.png" alt="Diagrama completo de niveles y flujos" class="section-image lightbox-trigger loaded" style="cursor: pointer;" loading="lazy">
               <p class="image-caption">Ejemplo de un diagrama completo de niveles y flujos</p>
             </div>
           </div>
@@ -267,7 +282,7 @@
               </ul>
             </div>
             <div class="image-container">
-              <img src="img/metáfora de la bañera.jpeg" alt="Metáfora de la bañera" class="section-image lightbox-trigger">
+              <img src="img/metáfora de la bañera.jpeg" alt="Metáfora de la bañera" class="section-image lightbox-trigger" loading="lazy">
               <p class="image-caption">La metáfora de la bañera ilustra el concepto de niveles y flujos</p>
             </div>
           </div>
@@ -305,7 +320,7 @@
               <p>La acumulación en los niveles puede crear desequilibrios que persisten en el tiempo, incluso cuando las entradas y salidas momentáneas están equilibradas.</p>
             </div>
             <div class="image-container">
-              <img src="img/delays-oscillation.svg" alt="Retardos y oscilaciones" class="section-image lightbox-trigger">
+              <img src="img/delays-oscillation.svg" alt="Retardos y oscilaciones" class="section-image lightbox-trigger" loading="lazy">
               <p class="image-caption">Figura 2: Los retardos generados por niveles pueden causar oscilaciones</p>
             </div>
           </div>
@@ -402,7 +417,7 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
               <p>Por ejemplo, podemos modelar 2.5 personas/mes aunque en la realidad las personas son unidades discretas.</p>
             </div>
             <div class="image-container">
-              <img src="img/continuous-vs-discrete.svg" alt="Flujos continuos vs discretos" class="section-image lightbox-trigger">
+              <img src="img/continuous-vs-discrete.svg" alt="Flujos continuos vs discretos" class="section-image lightbox-trigger" loading="lazy">
               <p class="image-caption">Figura 3: Comparación entre flujos continuos y discretos</p>
             </div>
           </div>
@@ -455,10 +470,11 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
               </div>
             </div>
             <div class="image-container">
-              <img src="img/Diagrama causal de un sistema de inventario de ropa con retroalimentaciones.png"
-                   alt="Diagrama causal de un sistema de inventario de ropa con retroalimentaciones"
-                   class="section-image lightbox-trigger">
-              <p class="image-caption">Diagrama causal de un sistema de inventario de ropa con retroalimentaciones</p>
+              <img src="img/inventario ropa.png"
+                   alt="Dinámica del inventario de ropa como sistema"
+                   class="section-image lightbox-trigger"
+                   loading="lazy">
+              <p class="image-caption">Dinámica del inventario de ropa como sistema</p>
             </div>
           </div>
         </div>
@@ -480,7 +496,7 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
   <!-- Lightbox modal con mejoras -->
   <div id="lightbox-modal" class="lightbox-modal hidden" style="display:none;" aria-modal="true" role="dialog">
     <span class="lightbox-close" aria-label="Cerrar imagen"><i class="fa-solid fa-times"></i></span>
-    <img class="lightbox-content" id="lightbox-img" src="" alt="">
+    <img class="lightbox-content" id="lightbox-img" src="" alt="" style="background:#fff;border:2px solid #e0e0e0;box-shadow:0 6px 24px rgba(0,0,0,0.10);border-radius:8px;">
     <div id="lightbox-caption"></div>
     <div class="lightbox-controls">
       <button class="lightbox-nav" id="lightbox-prev" aria-label="Imagen anterior"><i class="fa-solid fa-chevron-left"></i></button>
@@ -511,8 +527,8 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="script.js"></script>
-  <script src="simulation.js"></script>
-  <script src="diagnostic.js"></script>
+  <script defer src="script.js"></script>
+  <script defer src="simulation.js"></script>
+  <script defer src="diagnostic.js"></script>
 </body>
 </html>

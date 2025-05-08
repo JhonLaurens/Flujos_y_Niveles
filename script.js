@@ -166,39 +166,52 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxClose = document.querySelector('.lightbox-close');
-    
-    if (!lightbox || !lightboxImg || !lightboxClose) {
-      console.error('Elementos del lightbox no encontrados');
-      return;
-    }
-    
-    // Asegurarse de que el lightbox está oculto inicialmente
-    lightbox.style.display = 'none';
-    lightbox.classList.add('hidden');
-    
-    images.forEach(img => {
-      img.style.cursor = 'pointer';
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    // array con todas las imágenes del lightbox
+    const gallery = Array.from(images);
+    let currentIndex = -1;
+
+    images.forEach((img, idx) => {
       img.addEventListener('click', function() {
+        currentIndex = idx;
         lightboxImg.src = this.src;
         lightboxCaption.textContent = this.alt;
-        lightbox.style.display = 'flex';
         lightbox.classList.remove('hidden');
+        lightbox.style.display = 'flex';
       });
     });
-    
-    // Cerrar lightbox
-    lightboxClose.addEventListener('click', function() {
-      lightbox.style.display = 'none';
+
+    // cerrar
+    lightboxClose.addEventListener('click', () => {
       lightbox.classList.add('hidden');
+      lightbox.style.display = 'none';
     });
-    
-    // También cerrar al hacer clic fuera de la imagen
-    lightbox.addEventListener('click', function(e) {
-      if (e.target === this) {
-        this.style.display = 'none';
-        this.classList.add('hidden');
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        lightbox.style.display = 'none';
       }
     });
+
+    // navegación
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+        const img = gallery[currentIndex];
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = img.alt;
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % gallery.length;
+        const img = gallery[currentIndex];
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = img.alt;
+      });
+    }
   }
 
   // 6. Manejo del banner de cookies
