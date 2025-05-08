@@ -52,7 +52,7 @@ body {
   background-color: var(--primary-dark);
   color: var(--text-light);
   z-index: 1000;
-  overflow-y: auto;
+  overflow: visible;
   transform: translateX(-100%); /* Inicialmente oculto */
   transition: transform 0.3s ease;
 }
@@ -347,6 +347,15 @@ main {
   cursor: pointer;
 }
 
+/* Ajustar lightbox-nav para que siempre esté debajo */
+.lightbox-controls {
+  position: static;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 /* CORRECCIÓN: Banner de cookies */
 .cookie-banner {
   position: fixed;
@@ -463,7 +472,8 @@ main {
 .split-text-container {
   display: flex;
   justify-content: center;
-  font-size: 4rem;                      /* Más grande */
+  gap: 2rem;              /* espacio notable entre palabras */
+  font-size: 4rem;        /* más grande */
   font-weight: bold;
   text-transform: uppercase;
   color: var(--text-light);
@@ -479,13 +489,23 @@ main {
 }
 
 .text-part.left {
-  animation: slide-in-left 0.8s ease-out 0s forwards,
-             fade-in       0.6s ease-out 0s forwards;
+  animation: slide-in-left 0.8s ease-out forwards,
+             fade-in       0.6s ease-out forwards;
 }
 
 .text-part.right {
   animation: slide-in-right 0.8s ease-out 0.4s forwards,
              fade-in        0.6s ease-out 0.4s forwards;
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
 }
 
 @keyframes fade-in {
@@ -501,23 +521,27 @@ main {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: none;
   margin-right: 10px;
 }
+
 .action-button {
   background-color: var(--primary-color);
   color: var(--text-light);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
 .action-button:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
 .secondary-button {
   background-color: var(--background-light);
   color: var(--text-dark);
   border: 1px solid #ddd;
 }
+
 .secondary-button:hover {
   background-color: #eaeaea;
   transform: translateY(-2px);
@@ -532,11 +556,13 @@ main {
   border-radius: var(--border-radius);
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
+
 .example-box h4 {
   margin: 0 0 10px;
   color: var(--primary-dark);
   font-size: 1.1rem;
 }
+
 .example-box p {
   margin-bottom: 8px;
 }
@@ -548,9 +574,9 @@ main {
   gap: 10px;
   margin: 1rem 0;
 }
+
 .interactive-element button,
 .interactive-element a {
-  margin: 5px;
   flex: 0 0 auto;
 }
 
@@ -576,6 +602,7 @@ img.loading {
   background-size: 200% 100%;
   animation: loading-pulse 1.5s infinite;
 }
+
 img.loaded {
   animation: fade-in 0.3s ease-in;
 }
@@ -584,7 +611,109 @@ img.loaded {
   0% { background-position: 0% 0; }
   100% { background-position: -200% 0; }
 }
+
 @keyframes fade-in {
-  from { opacity: 0.5; }
+  from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+/* Animación de secciones al aparecer */
+.accordion-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.accordion-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animación de imágenes al aparecer */
+.section-image {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.section-image.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animación para el párrafo bajo el header */
+header p {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fade-in-up 0.6s ease-out 1s forwards;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Cascada de aparición para las opciones de la sección de introducción */
+#introduccion .text-content ul li {
+  opacity: 0;
+  transform: translateX(-15px);
+  animation: fade-in-left 0.4s ease-out forwards;
+}
+#introduccion .text-content ul li:nth-child(1) { animation-delay: 0.8s; }
+#introduccion .text-content ul li:nth-child(2) { animation-delay: 1s; }
+#introduccion .text-content ul li:nth-child(3) { animation-delay: 1.2s; }
+#introduccion .text-content ul li:nth-child(4) { animation-delay: 1.4s; }
+#introduccion .text-content ul li:nth-child(5) { animation-delay: 1.6s; }
+#introduccion .text-content ul li:nth-child(6) { animation-delay: 1.8s; }
+
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-15px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Enlace a actividad interactiva en sección Práctica */
+.practice-activity {
+  margin-top: var(--spacing-md);
+  text-align: center;
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.practice-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: var(--text-dark);
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: transform 0.3s, background 0.3s, color 0.3s;
+}
+
+.practice-link:hover {
+  background: var(--primary-color);
+  color: var(--text-light);
+  transform: translateY(-3px);
+}
+
+/* Reutiliza keyframes existentes */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Reducir animaciones para usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Indicaciones para el navegador sobre próximas animaciones */
+.accordion-section,
+.section-image {
+  will-change: opacity, transform;
+}
+
+/* Unificar media queries al final */
+@media (max-width: 600px) { /* ... */ }
+@media (max-width: 900px) { /* ... */ }
+@media (min-width: 992px) { /* ... */ }

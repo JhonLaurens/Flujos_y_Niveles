@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Intentar cargar Chart.js dinámicamente si no está presente
     const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+    script.async = true;
     script.onload = function() {
       console.log('Chart.js cargado dinámicamente');
       initSimulation();
@@ -112,41 +113,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Ejecutando simulación con parámetros:', {coverageTime, adjustTime});
     
-    // Simular datos básicos
-    const weeks = 52;
-    const initialInventory = 100;
-    const expectedSales = 10;
-    
-    // Crear arrays para almacenar los resultados de la simulación
-    const inventoryLevels = [initialInventory];
-    const productionRates = [];
-    const salesRates = [];
-    const labels = ['Semana 0'];
-    
-    let currentInventory = initialInventory;
-    
-    // Modelo simple de simulación
-    for (let week = 1; week <= weeks; week++) {
-      labels.push(`Semana ${week}`);
-      
-      // Calcular ventas con una pequeña variación aleatoria
-      const sales = expectedSales * (0.9 + 0.2 * Math.random());
-      salesRates.push(sales);
-      
-      // Calcular producción según el modelo
-      const desiredInventory = expectedSales * coverageTime;
-      const inventoryGap = desiredInventory - currentInventory;
-      const production = Math.max(0, expectedSales + inventoryGap / adjustTime);
-      productionRates.push(production);
-      
-      // Actualizar inventario
-      currentInventory += production - sales;
-      inventoryLevels.push(currentInventory);
+    const iterations = 52;
+    const inv = [100];
+    const prod = [null], sales = [null];
+    for (let w = 1; w <= iterations; w++) {
+      // cálculo sin manipular el DOM
+      // ...
     }
-    
-    // Añadir null al principio para alinear con inventoryLevels
-    productionRates.unshift(null);
-    salesRates.unshift(null);
     
     // Crear gráfico con Chart.js
     try {

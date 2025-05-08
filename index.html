@@ -25,6 +25,9 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  <!-- preconnect CDN externos -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
 </head>
 <body>
   <aside id="sidebar" class="open">
@@ -69,7 +72,6 @@
         <div class="progress-bar">
           <div class="progress-value"></div>
         </div>
-        <p class="progress-text">0% completado</p>
       </div>
 
       <!-- Secciones en acordeón -->
@@ -468,12 +470,21 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
                   <li>Producción = MAX(0, Ventas esperadas + Brecha de inventario / Tiempo de ajuste)</li>
                 </ul>
               </div>
+              <!-- Nuevo enlace a actividad interactiva -->
+              <div class="practice-activity">
+                <a href="https://view.genially.com/681d1780f5a618247ada3c3c/interactive-content-niveles-and-flujos"
+                   target="_blank"
+                   class="practice-link">
+                  Realizar actividad interactiva →
+                </a>
+              </div>
             </div>
             <div class="image-container">
-              <img src="img/inventario ropa.png"
-                   alt="Dinámica del inventario de ropa como sistema"
-                   class="section-image lightbox-trigger"
-                   loading="lazy">
+              <img
+                src="img/inventario ropa.png"
+                alt="Dinámica del inventario de ropa"
+                class="section-image lightbox-trigger"
+                loading="lazy">
               <p class="image-caption">Dinámica del inventario de ropa como sistema</p>
             </div>
           </div>
@@ -484,7 +495,7 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
     <footer>
       <div class="footer-content">
         <div class="footer-section">
-          <p>© 2025 Página Educativa de Dinámica de Sistemas</p>
+          <p>© 2025 Página Educativa de Curso Teoria de Sistemas</p>
           <a href="https://github.com/JhonLaurens" target="_blank" rel="noopener">
             <i class="fa-brands fa-github"></i> JhonLaurens
           </a>
@@ -526,7 +537,8 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- scripts no bloqueantes -->
+  <script async src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script defer src="script.js"></script>
   <script defer src="simulation.js"></script>
   <script defer src="diagnostic.js"></script>

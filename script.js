@@ -294,26 +294,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // 8. Función para manejar el indicador de progreso
+  // 8. Indicador de progreso con scroll passivo y debounce
   function initProgressBar() {
     const progressBar = document.querySelector('.progress-value');
-    const progressText = document.querySelector('.progress-text');
-    
-    if (!progressBar || !progressText) return;
-    
-    // Calcular el progreso basado en scroll
-    window.addEventListener('scroll', function() {
-      // Altura total de la página (incluyendo la parte no visible)
-      const totalHeight = document.body.scrollHeight - window.innerHeight;
-      // Posición actual de scroll
-      const scrollPosition = window.pageYOffset;
-      // Calcular porcentaje
-      const scrollPercentage = Math.round((scrollPosition / totalHeight) * 100);
-      
-      // Actualizar barra de progreso y texto
-      progressBar.style.width = scrollPercentage + '%';
-      progressText.textContent = scrollPercentage + '% completado';
-    });
+    let ticking = false;
+    window.addEventListener('scroll', function(e) {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const total = document.body.scrollHeight - window.innerHeight;
+          const pct = Math.round((window.pageYOffset / total) * 100);
+          progressBar.style.width = pct + '%';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
   }
 
   // Añadir función para verificar y cargar imágenes
@@ -328,6 +323,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // 9. Animar secciones e imágenes al hacer scroll
+  function initSectionAnimations() {
+    const sections = document.querySelectorAll('.accordion-section');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          entry.target.querySelectorAll('.section-image')
+            .forEach(img => img.classList.add('visible'));
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(sec => observer.observe(sec));
+  }
+
   // Inicializar todos los componentes
   initSidebar();
   initAccordions();
@@ -337,6 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initSimulation();
   initProgressBar(); // Agregar la inicialización de la barra de progreso
   checkImages(); // Verificar imágenes
+  initSectionAnimations(); // Llamar al final
 
   // Restaurar estado de acuerdo a la URL al cargar
   setTimeout(function() {
