@@ -456,24 +456,31 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
               
 
               <div class="example-box">
-                <h4>Ejemplo práctico: Sistema de inventario</h4>
-                <p><strong>Nivel</strong>: Inventario (unidades)</p>
-                <p><strong>Flujos</strong>:</p>
+                <h4>🛁 Ejemplo práctico: Sistema de inventario (modelo tipo tina)</h4>
+                <p><strong>🔹 Nivel (Stock):</strong></p>
+                <p>Inventario de ropa (en unidades). Representado por el agua dentro de la tina. Es la cantidad de productos disponibles en el almacén.</p>
+                <p><strong>🔹 Flujos:</strong></p>
+                <p>Entrada (Producción): Representada por la tubería verde que llena la tina. La cantidad de ropa que se produce semanalmente.</p>
+                <p>Salida (Ventas): Representada por la tubería roja que drena la tina. La cantidad de ropa que se vende semanalmente.</p>
+                <p><strong>🔹 Variables auxiliares:</strong></p>
+                <p>Inventario deseado = Ventas esperadas × Tiempo de cobertura<br>
+                   <em>→ Línea punteada roja: indica cuánto inventario se desea mantener.</em></p>
+                <p>Brecha de inventario = Inventario deseado – Inventario actual<br>
+                   <em>→ Diferencia entre nivel deseado y actual.</em></p>
+                <p>Producción ajustada = max(0, Ventas esperadas + Brecha de inventario / Tiempo de ajuste)<br>
+                   <em>→ Cuánta ropa producir para alcanzar el inventario deseado.</em></p>
+                <p><strong>🔹 Factores externos:</strong></p>
                 <ul>
-                  <li>Entrada: Producción (unidades/semana)</li>
-                  <li>Salida: Ventas (unidades/semana)</li>
-                </ul>
-                <p><strong>Variables auxiliares</strong>:</p>
-                <ul>
-                  <li>Inventario deseado = Ventas esperadas * Tiempo de cobertura</li>
-                  <li>Brecha de inventario = Inventario deseado - Inventario</li>
-                  <li>Producción = MAX(0, Ventas esperadas + Brecha de inventario / Tiempo de ajuste)</li>
+                  <li>Producción: capacidad de fábrica y tasa de producción.</li>
+                  <li>Ventas: precio, promociones y estación del año.</li>
                 </ul>
               </div>
+
               <!-- Nuevo enlace a actividad interactiva -->
               <div class="practice-activity">
                 <a href="https://view.genially.com/681d1780f5a618247ada3c3c/interactive-content-niveles-and-flujos"
                    target="_blank"
+                   rel="noopener"
                    class="practice-link">
                   Realizar actividad interactiva →
                 </a>
@@ -515,19 +522,6 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
     </div>
   </div>
   
-  <!-- Simulación modal mejorada -->
-  <div id="simulation-modal" class="simulation-modal hidden" style="display:none;" aria-modal="true" role="dialog">
-    <div class="simulation-container">
-      <div class="simulation-header">
-        <h3><i class="fa-solid fa-chart-line"></i> Simulación: Sistema de Inventario</h3>
-        <button class="close-simulation" aria-label="Cerrar simulación"><i class="fa-solid fa-times"></i></button>
-      </div>
-      <div class="simulation-body">
-        <!-- ...contenido de simulación... -->
-      </div>
-    </div>
-  </div>
-  
   <!-- Cookie consent banner mejorado -->
   <div id="cookie-consent" class="cookie-banner" style="opacity: 0; transition: opacity 0.3s ease;">
     <p>Utilizamos cookies para mejorar su experiencia. Al continuar navegando acepta nuestra <a href="#">política de privacidad</a>.</p>
@@ -538,9 +532,7 @@ Factor_ajuste = MIN(1, Presupuesto/Costo_por_contratacion)
   </div>
 
   <!-- scripts no bloqueantes -->
-  <script async src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script defer src="script.js"></script>
-  <script defer src="simulation.js"></script>
   <script defer src="diagnostic.js"></script>
 </body>
 </html>

@@ -717,3 +717,42 @@ header p {
 @media (max-width: 600px) { /* ... */ }
 @media (max-width: 900px) { /* ... */ }
 @media (min-width: 992px) { /* ... */ }
+
+/* Footer profesional */
+footer {
+  background: var(--primary-dark);
+  color: var(--text-light);
+  padding: var(--spacing-md) 0;
+  margin-top: var(--spacing-xl);
+  font-size: 0.9rem;
+}
+
+/* Footer profesional: centrar contenido */
+footer .footer-content {
+  justify-content: center;  /* centrar secciones en el footer */
+}
+
+footer .footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+footer .footer-section {
+  margin: var(--spacing-sm) 0;
+}
+
+footer a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}

@@ -8,18 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const sidebarToggle = document.getElementById('sidebar-toggle');
   const mainContent = document.getElementById('main-content');
   const lightbox = document.getElementById('lightbox-modal');
-  const simulationModal = document.getElementById('simulation-modal');
   
   // 1. CORRECCIÓN: Ocultar modales al inicio
   if (lightbox) {
     // Asegurarse de que el lightbox está oculto al cargar la página
     lightbox.classList.add('hidden');
     lightbox.style.display = 'none';
-  }
-  
-  if (simulationModal) {
-    simulationModal.classList.add('hidden');
-    simulationModal.style.display = 'none';
   }
   
   // Inicialización del sidebar
@@ -252,48 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // 7. Inicializar simulación modal
-  function initSimulation() {
-    const simulationBtn = document.getElementById('showSimulation');
-    const simulationModal = document.getElementById('simulation-modal');
-    const closeSimulation = document.querySelector('.close-simulation');
-    
-    if (!simulationBtn || !simulationModal) return;
-    
-    // Asegurarse de que está oculto
-    simulationModal.style.display = 'none';
-    
-    simulationBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      simulationModal.style.display = 'flex';
-      simulationModal.classList.remove('hidden');
-    });
-    
-    if (closeSimulation) {
-      closeSimulation.addEventListener('click', function() {
-        simulationModal.style.display = 'none';
-        simulationModal.classList.add('hidden');
-      });
-    }
-    
-    // Cerrar al hacer clic fuera
-    simulationModal.addEventListener('click', function(e) {
-      if (e.target === this) {
-        this.style.display = 'none';
-        this.classList.add('hidden');
-      }
-    });
-    
-    // Manejo de botón de descarga de recursos
-    const downloadBtn = document.getElementById('downloadResources');
-    if (downloadBtn) {
-      downloadBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        alert('Los recursos de modelado estarán disponibles próximamente.');
-      });
-    }
-  }
-
   // 8. Indicador de progreso con scroll passivo y debounce
   function initProgressBar() {
     const progressBar = document.querySelector('.progress-value');
@@ -346,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
   generateTOC();
   initLightbox();
   initCookieBanner();
-  initSimulation();
   initProgressBar(); // Agregar la inicialización de la barra de progreso
   checkImages(); // Verificar imágenes
   initSectionAnimations(); // Llamar al final
