@@ -174,7 +174,13 @@ document.addEventListener('DOMContentLoaded', function() {
         lightboxCaption.textContent = this.alt;
         lightbox.classList.remove('hidden');
         lightbox.style.display = 'flex';
+        lightboxImg.classList.remove('zoom');   // reset zoom
       });
+    });
+
+    // hacer zoom al clic en la imagen del lightbox
+    lightboxImg.addEventListener('click', function() {
+      this.classList.toggle('zoom');
     });
 
     // cerrar
@@ -282,8 +288,12 @@ document.addEventListener('DOMContentLoaded', function() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          // imágenes
           entry.target.querySelectorAll('.section-image')
             .forEach(img => img.classList.add('visible'));
+          // bloques de texto
+          entry.target.querySelectorAll('.text-content')
+            .forEach(txt => txt.classList.add('visible'));
           obs.unobserve(entry.target);
         }
       });

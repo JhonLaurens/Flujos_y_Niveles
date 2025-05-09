@@ -253,9 +253,29 @@ main {
   min-width: 300px;
 }
 
+/* Animar bloques de texto al aparecer */
+.text-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.text-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .image-container {
   flex: 1 1 35%;
   min-width: 250px;
+  display: block;           /* quitar flex */
+  text-align: center;       /* centrar contenido */
+  margin: var(--spacing-md) 0;
+}
+
+/* Asegurar que la imagen ocupe todo el contenedor */
+.section-image {
+  width: 100%;
+  height: auto;
 }
 
 /* Barra de progreso */
@@ -334,8 +354,16 @@ main {
 }
 
 .lightbox-content {
-  max-width: 90%;
-  max-height: 80%;
+  max-width: 95%;
+  max-height: 95%;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+/* En hover o when clicked (añadir clase .zoom) */
+.lightbox-content.zoom {
+  transform: scale(1.2);
+  cursor: zoom-out;
 }
 
 .lightbox-close {
@@ -354,6 +382,33 @@ main {
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
+}
+
+/* Ajuste para botones de navegación del lightbox */
+.lightbox-controls {
+  margin-top: var(--spacing-md);
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.lightbox-nav {
+  font-size: 2rem;             /* icono más grande */
+  width: 50px;                 /* botón más ancho */
+  height: 50px;                /* botón más alto */
+  color: var(--text-light);
+  background: rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 50%;          /* forma circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.lightbox-nav:hover {
+  background: rgba(0,0,0,0.6);
 }
 
 /* CORRECCIÓN: Banner de cookies */
